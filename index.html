@@ -387,6 +387,61 @@ font-size:2.3rem;
 </style>
 </section>
 
+
+
+<!-- Message Form – Sends data to Google Sheets -->
+<style>
+    .msg-form * { box-sizing: border-box; }
+    .msg-form label { display: block; font-weight: 500; margin: 12px 0 4px; }
+    .msg-form input,
+    .msg-form textarea {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1px solid #ccc;
+        border-radius: 12px;
+        font-size: 1rem;
+        margin-bottom: 16px;
+    }
+    .msg-form textarea { min-height: 100px; resize: vertical; }
+    .msg-form button {
+        background: #4f46e5;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        width: 100%;
+        border-radius: 40px;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 1.1rem;
+        transition: background 0.2s;
+    }
+    .msg-form button:hover { background: #4338ca; }
+</style>
+
+<div class="msg-form">
+    <form id="messageForm" action="https://script.google.com/macros/s/AKfycbzDcCmlGptM1Tsy7bQxlx3NWlqavGOQXrd99yExJx5eDvajx8v3z5AYxfEeOEvrbORz/exec" method="POST" target="hidden_iframe">
+        <label for="name">Your name (optional)</label>
+        <input type="text" id="name" name="name" placeholder="e.g. Alex">
+
+        <label for="message">Message <span style="color:#b91c1c;">*</span></label>
+        <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
+
+        <button type="submit">📨 Send message</button>
+    </form>
+
+    <!-- Hidden iframe receives the response (no page reload) -->
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
+</div>
+
+<!-- Optional: small script to clear field after success (already handled by server, but safe) -->
+<script>
+    // If you want to manually clear after alert, you can leave this empty.
+    // The server already returns a script that clears the message field and shows an alert.
+</script>
+
+
+
+  
 <footer>
 BRHAMPARKASH · Design & Automation Portfolio
 </footer>
@@ -435,6 +490,7 @@ animate();
 
 </body>
 </html>
+
 
 
 
