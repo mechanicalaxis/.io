@@ -1,341 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mechatronics Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanical Engineer | Portfolio </title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=JetBrains+Mono&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-soft: #f8fafc;
+            --text-dark: #0f172a;
+            --text-light: #64748b;
+            --hmi-outer: #334155;
+            --hmi-inner: #020617;
+            --accent-blue: #38bdf8;
+            --led-on: #22c55e;
+            --led-off: #1e293b;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
+        body {
+            background-color: var(--bg-soft);
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-body{
-font-family:'Inter',sans-serif;
-background:linear-gradient(-45deg,#05070f,#0a0f1f,#001b2a,#071018);
-background-size:400% 400%;
-animation:gradientShift 18s ease infinite;
-color:#e2f0fa;
-scroll-behavior:smooth;
-}
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-logo { font-family: 'Orbitron'; font-weight: 700; color: var(--primary); font-size: 1.5rem; }
+        .nav-links { display: flex; gap: 1rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; transition: 0.3s; }
+        .hire-btn-top { background: var(--primary); color: white !important; padding: 6px 12px; border-radius: 4px; }
 
-@keyframes gradientShift{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
-}
+        /* --- HERO --- */
+        header { padding: 160px 5% 5px; text-align: center; }
+        header h1 { font-family: 'Orbitron'; font-size: clamp(2.2rem, 8vw, 3rem); margin-bottom: 1rem; color: var(--text-dark); }
+        header p { font-family: 'JetBrains Mono'; color: var(--primary); font-size: clamp(1rem, 3vw, 1.4rem); font-weight: bold; }
 
-.container{max-width:1200px;margin:auto;padding:40px 25px}
+        /* --- SECTIONS --- */
+        section { padding: 160px 5%; max-width: 1100px; margin: 0 auto; }
+        .section-title { font-family: 'Orbitron'; text-align: center; margin-bottom: 40px; font-size: 1.8rem; letter-spacing: 1px; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 4px; background: var(--primary); margin: 5px auto; }
 
-/* NAVBAR */
-.navbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:rgba(10,20,40,0.7);
-border:1px solid cyan;
-border-radius:50px;
-padding:18px 40px;
-backdrop-filter:blur(10px);
-flex-wrap:wrap;
-gap:15px;
-}
+        /* --- DOWNLOADS SECTION --- */
+        .download-area {
+            background: #fff;
+            padding: 160px 5%;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+            text-align: center;
+        }
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .dl-card {
+            background: var(--bg-soft);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
+        }
+        .dl-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .dl-card h4 { font-family: 'Orbitron'; margin-bottom: 15px; font-size: 0.9rem; }
+        .dl-button {
+            display: inline-flex;
+            align-items: center;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono';
+            font-size: 0.8rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .dl-button:hover { background: var(--primary-hover); box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3); }
 
-.logo{font-size:1.8rem;font-weight:800;color:#0ff}
+        /* --- EXPERTISE --- */
+        .exp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .exp-card { background: white; padding: 40px; border-radius: 15px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .exp-card h3 { font-family: 'Orbitron'; color: var(--primary); margin-bottom: 20px; font-size: 1.1rem; }
+        .exp-card ul { list-style: none; font-family: 'JetBrains Mono'; font-size: 0.85rem; }
+        .exp-card li { margin-bottom: 10px; padding-left: 20px; position: relative; color: var(--text-light); }
+        .exp-card li::before { content: '>'; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
 
-.nav-links{display:flex;gap:28px}
-.nav-links a{
-color:#d0ecff;
-text-decoration:none;
-position:relative;
-}
-.nav-links a::after{
-content:'';
-position:absolute;
-bottom:-5px;
-left:0;
-width:0;
-height:2px;
-background:cyan;
-transition:.3s;
-}
-.nav-links a:hover::after{width:100%}
+        /* --- HMI --- */
+        .hmi-container { background: #f1f5f9; padding: 80px 5%; width: 100%; }
+        .fancy-hmi {
+            background: var(--hmi-outer); padding: clamp(20px, 5vw, 40px); border-radius: 24px; 
+            max-width: 900px; margin: 0 auto; border: 10px solid #94a3b8;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+        .hmi-screen { background: var(--hmi-inner); border-radius: 12px; padding: 25px; border: 4px solid #000; }
+        .output-cluster { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 40px; }
+        .led-bulb {
+            width: clamp(35px, 8vw, 55px); height: clamp(35px, 8vw, 55px); 
+            border-radius: 50%; background: var(--led-off);
+            border: 4px solid #000; margin: 0 auto 10px; transition: 0.2s;
+        }
+        .led-bulb.active { background: var(--led-on); box-shadow: 0 0 25px var(--led-on); }
+        .led-label { color: #fff; font-family: 'JetBrains Mono'; font-size: 0.65rem; text-align: center; display: block; }
 
-.nav-contact{display:flex;gap:18px;font-size:.9rem;color:#b0f0ff}
-.nav-contact i{color:cyan;margin-right:6px}
+        .ladder-window {
+            background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px;
+            font-family: 'JetBrains Mono'; font-size: 0.75rem; color: #94a3b8;
+            overflow-x: auto; white-space: nowrap; margin-bottom: 30px; border: 1px solid #1e293b;
+        }
+        .m-tag.active { color: #fff; background: var(--primary); padding: 0 4px; font-weight: bold; }
 
-/* HERO */
-.hero{text-align:center;padding:80px 0}
-.hero h1{
-font-size:3.8rem;
-text-shadow:0 0 20px rgba(0,255,255,.6),0 0 60px rgba(0,255,255,.2);
-}
-.highlight{
-background:linear-gradient(145deg,#fff,#aaf0ff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-.hero p{margin:20px auto;max-width:600px;color:#c0e2ff}
+        .industrial-btn {
+            width: 80px; height: 80px; border-radius: 50%; background: #dc2626;
+            border: 6px solid #7f1d1d; cursor: pointer; box-shadow: 0 6px 0 #7f1d1d;
+            display: block; margin: 0 auto; position: relative; transition: 0.1s;
+        }
+        .industrial-btn:active { transform: translateY(4px); box-shadow: 0 2px 0 #7f1d1d; }
+        .industrial-btn::after { content: 'X0'; color: white; font-family: 'Orbitron'; font-weight: bold; position: absolute; top:50%; left:50%; transform:translate(-50%, -50%); }
 
-.btn{
-padding:14px 32px;
-border-radius:50px;
-border:1px solid cyan;
-color:white;
-text-decoration:none;
-display:inline-block;
-margin:8px;
-transition:.3s;
-}
-.btn:hover{
-background:#0099ff;
-box-shadow:0 0 30px cyan;
-transform:translateY(-4px);
-}
+        /* --- CONTACT --- */
+        .contact-card { background: white; padding: 40px; border-radius: 20px; border: 2px solid #e2e8f0; max-width: 600px; margin: 0 auto; }
+        .form-label { display: block; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; color: var(--text-light); margin-bottom: 5px; }
+        input, textarea { width: 100%; padding: 14px; margin-bottom: 20px; border: 1px solid #e2e8f0; border-radius: 8px; background: var(--bg-soft); }
+        .send-btn { width: 100%; padding: 18px; background: var(--text-dark); color: white; border: none; font-family: 'Orbitron'; font-weight: bold; cursor: pointer; border-radius: 8px; transition: 0.3s; }
+        .send-btn:hover { background: var(--primary); transform: translateY(-2px); }
 
-/* OPEN FOR WORK */
-.open-work{
-margin:80px auto;
-text-align:center;
-padding:50px 30px;
-border-radius:40px;
-background:linear-gradient(145deg,rgba(0,255,255,0.1),rgba(0,150,255,0.15));
-border:2px solid cyan;
-box-shadow:0 0 40px rgba(0,255,255,0.4);
-backdrop-filter:blur(10px);
-animation:glowPulse 3s infinite alternate;
-}
-@keyframes glowPulse{
-from{box-shadow:0 0 20px rgba(0,255,255,0.3)}
-to{box-shadow:0 0 60px rgba(0,255,255,0.8)}
-}
-.open-work h2{
-font-size:2.5rem;
-margin-bottom:15px;
-text-shadow:0 0 20px cyan;
-}
-.open-work p{font-size:1.2rem;color:#c0eaff;margin-bottom:20px}
-.hire-btn{
-padding:16px 40px;
-font-size:1.1rem;
-border-radius:50px;
-background:cyan;
-color:black;
-font-weight:700;
-text-decoration:none;
-}
-.hire-btn:hover{background:white;box-shadow:0 0 40px cyan}
+        footer { text-align: center; padding: 60px 5%; font-size: 0.75rem; color: var(--text-light); font-family: 'JetBrains Mono'; border-top: 1px solid #e2e8f0; }
 
-/* SECTIONS */
-.section-title{
-font-size:2.3rem;
-text-align:center;
-margin-bottom:20px;
-background:linear-gradient(145deg,#fff,#b0f4ff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-border-bottom:3px solid cyan;
-display:inline-block;
-padding-bottom:6px;
-}
-
-/* CARDS */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
-margin-top:40px;
-}
-
-.card{
-background:rgba(12,22,40,.75);
-border:1px solid rgba(0,255,255,.2);
-border-radius:28px;
-padding:25px;
-transition:.3s;
-backdrop-filter:blur(10px);
-text-align:center;
-}
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 40px rgba(0,255,255,.4);
-}
-
-/* PROJECTS */
-.project-img{
-height:200px;
-background:#081420;
-border-radius:20px;
-margin-bottom:15px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:40px;
-}
-
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(40px);transition:.8s ease}
-.reveal.active{opacity:1;transform:translateY(0)}
-
-footer{text-align:center;padding:40px;color:#88bde0}
-
-#bgParticles{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:-1;
-}
-
-@media(max-width:700px){
-
-.navbar{
-flex-direction:column;
-align-items:center;
-padding:20px;
-border-radius:25px;
-text-align:center;
-}
-
-.nav-links{
-flex-wrap:wrap;
-justify-content:center;
-gap:15px;
-}
-
-.nav-contact{
-flex-direction:column;
-align-items:center;
-gap:8px;
-font-size:.85rem;
-word-break:break-word;
-}
-
-.nav-contact span{
-display:block;
-max-width:100%;
-}
-
-.hero h1{
-font-size:2.3rem;
-}
-
-}
-
-</style>
+        /* --- MOBILE ADAPTATION --- */
+        @media (max-width: 600px) {
+            .nav-links a:not(.hire-btn-top) { display: none; }
+            header { padding-top: 120px; }
+            .output-cluster { grid-template-columns: repeat(2, 1fr); }
+            section { padding: 60px 5%; }
+        }
+    </style>
 </head>
-
 <body>
 
-<canvas id="bgParticles"></canvas>
+<nav>
+  <div class="nav-logo">
+    BRHAMPARKASH
+    <div style="font-size: 0.9rem; margin-top: 4px;">
+      <div>📱 +91-8221950508</div>
+      <div>✉️ <a href="mailto:parkashbrham82@gmail.com" style="color: inherit; text-decoration: none;">parkashbrham82@gmail.com</a></div>
+      <div>🔗 <a href="https://www.linkedin.com/in/brham27/" target="_blank" style="color: inherit; text-decoration: none;">LinkedIn</a></div>
+    </div>
+  </div>
 
-<div class="container">
-<nav class="navbar">
-<div class="logo">Design & Automation ⚙️</div>
-
-<div class="nav-links">
-<a href="#home">Home</a>
-<a href="#expertise">Expertise</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
-</div>
-
-<div class="nav-contact">
-<span><i class="fas fa-phone"></i> +91 8221950508</span>
-<span><i class="fas fa-envelope"></i> parkashbrham82@gmail.com</span>
-<span style="color: skyblue;">
-  <i class="fab fa-linkedin"></i>
-  <a href="https://www.linkedin.com/in/brham27/" style="color: skyblue; text-decoration: none;">
-    Visit LinkedIn
-  </a>
-</span>
-  <span style="color: skyblue;">
-  <i class="fas fa-download"></i>
-  <a href="https://drive.google.com/drive/folders/1LYHCDTBloxn0T0UQ70pYzplFkDerHhf3?usp=sharing" style="color: skyblue; text-decoration: none;">
-    Download CV
-  </a>
-</span>
-
-       
-</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#downloads">Resources</a>
+    <a href="#hmi">Simulator</a>
+    <a href="#contact" class="hire-btn-top">Contact</a>
+  </div>
 </nav>
-</div>
 
-<section id="home" class="hero container">
-<h1>I'M <span class="highlight">BRHAMPARKASH</span></h1>
-<p>Mechanical Engineer · CAD(Product Design) · Automation · PLC & HMI · </p>
-<p>I'm a Mechanical engineer with 4+ years of experience in Machine Design & Machine Automation field.</p>
-<a href="#projects" class="btn">View Portfolio</a>
+
+<header>
+    <h1>MECHANICAL ENGINEER</h1>
+    <p> AUTOMATION • CAD DESIGN </p>
+   <button 
+  style="font-family: 'JetBrains Mono'; 
+         color: var(--primary); 
+         font-size: clamp(1rem, 3vw, 1.4rem); 
+         font-weight: bold; 
+         text-align: center; 
+         background: transparent; 
+         border: 2px solid var(--primary); 
+         padding: 0.5rem 1rem; 
+         border-radius: 6px; 
+         cursor: pointer; 
+         width: 300px;"
+  onmouseover="this.style.backgroundColor='var(--primary)'; this.style.color='white'; 
+               this.style.opacity='0.5'; 
+               setTimeout(()=>{this.style.opacity='1';},200);"
+  onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--primary)'; this.style.opacity='1';"
+  onclick="location.href='#contact'">
+  Hire me
+</button>
+
+
+
+
+</header>
+
+<section id="about">
+    <h2 class="section-title">ENGINEERING PHILOSOPHY</h2>
+     <p align="center" style="font-family: 'JetBrains Mono'; color: var(--primary); font-size: clamp(1rem, 3vw, 1.4rem); font-weight: bold;">
+   4+ years of experience.
+</p>
+
+    <div style="text-align: center; max-width: 800px; margin: 0 auto; color: var(--text-light);">
+        Integrating mechanical precision with robust digital control. I specialize in end-to-end industrial systems, bridging the gap between a 3D CAD model and a fully commissioned PLC-driven production line.
+    </div>
 </section>
 
 
 
-<section id="expertise" class="container">
-<h2 class="section-title">Expertise</h2>
-<div class="grid">
-
-<div class="card reveal">
-<h3>CAD & 3D Design</h3>
-<p>AutoCAD · Autodesk Inventor · Autodesk Fusion360 · SolidWorks · CATIA · UGNX · Solidedge · Creo · Altium Designer · 3D Printing</p>
+<div class="download-area" id="downloads">
+    <h2 class="section-title">RESOURCES</h2>
+    <div class="download-grid">
+        <div class="dl-card">
+            <h4>TECHNICAL CV</h4>
+            <p style="font-size: 0.8rem; color: var(--text-light); margin-bottom: 20px;">Detailed experience in PLC programming and Mechanical design.</p>
+            <a href="https://drive.google.com/drive/folders/1LYHCDTBloxn0T0UQ70pYzplFkDerHhf3?usp=sharing" class="dl-button">DOWNLOAD CV .PDF</a>
+        </div>
+        <div class="dl-card">
+            <h4>PROJECT PORTFOLIO</h4>
+            <p style="font-size: 0.8rem; color: var(--text-light); margin-bottom: 20px;">Comprehensive look at past CAD Designs and Automation Projects.</p>
+            <a href="https://drive.google.com/drive/folders/1l7eoYa9aAy52Tq8Huax2q0sRI6J1RlNF?usp=sharing" class="dl-button">DOWNLOAD PORTFOLIO</a>
+        </div>
+    </div>
 </div>
 
-<div class="card reveal">
-<h3>Automation</h3>
-<p>PLC Programming · Ladder Logic · HMI</p>
-</div>
-
-<div class="card reveal">
-<h3>Freelance Services</h3>
-<p>Product Design & Drafting · Automation · Consulting</p>
-</div>
-
-</div>
+<section id="expertise">
+    <h2 class="section-title">CORE EXPERTISE</h2>
+    <div class="exp-grid">
+        <div class="exp-card">
+            <h3>INDUSTRIAL AUTOMATION</h3>
+            <ul>
+                <li>PLC</li>
+                <li>HMI</li>
+                <li>Servo Drive & Motion Control</li>
+                <li>Industrial Communication</li>
+            </ul>
+        </div>
+        
+        <div class="exp-card">
+            <h3>PRODUCT DESIGN & DEVELOPMENT</h3>
+            <ul>
+                <li>AUTOCAD</li>
+                <li>SOLIDWORKS</li>
+                <li>UGNX (Unigraphics)</li>
+                <li>CATIA</li>
+                <li>CREO</li>
+		<li>SOLIDEDGE</li>
+		<li>AUTODESK INVENTOR</li>
+		<li>AUTODESK FUSION360</li>
+   		<li>SOLIDEDGE</li>
+            </ul>
+		<ul p align="left" style="font-family: 'JetBrains Mono'; color: var(--primary); font-size: clamp(1rem, 3vw, 1.4rem); font-weight: bold;">3D Printing</ul>
+        </div>
+    </div>
 </section>
 
-<section id="projects" class="container">
-<h2 class="section-title">Projects</h2>
-<div class="grid">
+<div class="hmi-container" id="hmi">
+    <h2 class="section-title">LIVE LOGIC SIMULATOR</h2>
+    <div class="fancy-hmi">
+        <div class="hmi-screen">
+            <div class="output-cluster">
+                <div class="led-unit"><div id="Y0" class="led-bulb"></div><span class="led-label">Y0:LOAD</span></div>
+                <div class="led-unit"><div id="Y1" class="led-bulb"></div><span class="led-label">Y1:TRANS</span></div>
+                <div class="led-unit"><div id="Y2" class="led-bulb"></div><span class="led-label">Y2:PROC</span></div>
+                <div class="led-unit"><div id="Y3" class="led-bulb"></div><span class="led-label">Y3:EXIT</span></div>
+            </div>
+            
+            <div class="ladder-window">
+                |--[LDP X0]--[<span id="m0-tag" class="m-tag">M0</span>]--(SET M1, RST M0)--|<br>
+                |--[LDP X0]--[<span id="m1-tag" class="m-tag">M1</span>]--(SET M2, RST M1)--|<br>
+                |--[LDP X0]--[<span id="m2-tag" class="m-tag">M2</span>]--(SET M3, RST M2)--|<br>
+                |--[LDP X0]--[<span id="m3-tag" class="m-tag">M3</span>]--(SET M4, RST M3)--|
+            </div>
 
-<div class="card reveal">
-<div class="project-img">🤖</div>
-<h3>Robotic Gripper</h3>
-<p>3D printed pneumatic gripper system</p>
+            <button class="industrial-btn" id="x0-btn"></button>
+            <p style="text-align: center; color: var(--accent-blue); font-size: 0.6rem; margin-top: 15px; font-family: 'Orbitron'; font-weight: bold;">INPUT SIGNAL: X0</p>
+        </div>
+    </div>
 </div>
 
-<div class="card reveal">
-<div class="project-img">⚙️</div>
-<h3>CNC Retrofit</h3>
-<p>PLC modernization & HMI upgrade</p>
-</div>
+<section id="contact"  style="padding-bottom: 20px;">
+  <h2 class="section-title">REQUEST COLLABORATION</h2>
+  <div class="contact-card" style="margin-bottom: 50px;">
+    <form action="https://script.google.com/macros/s/AKfycbzjp-ijdzfYZ1OlS6tGWkWDhyQ1jeDAVvZGGaTJk2lAEIMwg3XGx0DUn0H8fgUQ-vXI/exec" method="POST">
+      <label class="form-label">Full Name</label>
+      <input type="text" name="fullName" placeholder="John Doe" required>
 
-<div class="card reveal">
-<div class="project-img">🚗</div>
-<h3>Suspension System</h3>
-<p>Double wishbone CAD + FEA</p>
-</div>
+      <label class="form-label">Email Address</label>
+      <input type="email" name="email" placeholder="john@company.com" required>
 
-</div>
+      <label class="form-label">Project Scope</label>
+      <textarea name="projectScope" rows="4" placeholder="Briefly describe your automation needs..." required></textarea>
 
-<section class="container open-work reveal">
-<h2>🚀 OPEN FOR WORK</h2>
-<p>Available for freelance, contract, and full-time engineering projects.</p>
-<a href="#contact" class="hire-btn">Hire Me Now</a>
-</section>
-</section>
-
-<section id="contact" class="container">
-<h2 class="section-title">Contact</h2>
-<div class="card reveal">
-<p>📞 +91 8221950508</p>
-<p>📧 parkashbrham82@gmail.com</p>
-<p>Available for freelance & contract work</p>
-</div>
-</section>
+      <button type="submit" class="send-btn">SEND ENQUIRY</button>
+    </form>
+  </div>
 
 
-<section id="Linkedin" class="container">
+
+
+
+
+
+<div id="Linkedin" class="container">
 <div class="linkedin-card">
   <img src="https://static.licdn.com/scds/common/u/images/logos/favicons/v1/favicon.ico" alt="LinkedIn Logo">
   <div class="linkedin-info">
@@ -385,115 +356,85 @@ font-size:2.3rem;
     text-decoration: underline;
   }
 </style>
+</div>
+
+
+
+
 </section>
 
 
 
-<!-- Message Form – Sends data to Google Sheets -->
-<style>
-    .msg-form * { box-sizing: border-box; }
-    .msg-form label { display: block; font-weight: 500; margin: 12px 0 4px; }
-    .msg-form input,
-    .msg-form textarea {
-        width: 100%;
-        padding: 10px 14px;
-        border: 1px solid #ccc;
-        border-radius: 12px;
-        font-size: 1rem;
-        margin-bottom: 16px;
-    }
-    .msg-form textarea { min-height: 100px; resize: vertical; }
-    .msg-form button {
-        background: #4f46e5;
-        color: white;
-        border: none;
-        padding: 12px 20px;
-        width: 100%;
-        border-radius: 40px;
-        font-weight: 600;
-        cursor: pointer;
-        font-size: 1.1rem;
-        transition: background 0.2s;
-    }
-    .msg-form button:hover { background: #4338ca; }
-</style>
-
-<div class="msg-form">
-    <form id="messageForm" action="https://script.google.com/macros/s/AKfycbzDcCmlGptM1Tsy7bQxlx3NWlqavGOQXrd99yExJx5eDvajx8v3z5AYxfEeOEvrbORz/exec" method="POST" target="hidden_iframe">
-        <label for="name">Your name (optional)</label>
-        <input type="text" id="name" name="name" placeholder="e.g. Alex">
-
-        <label for="message">Message <span style="color:#b91c1c;">*</span></label>
-        <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
-
-        <button type="submit">📨 Send message</button>
-    </form>
-
-    <!-- Hidden iframe receives the response (no page reload) -->
-    <iframe name="hidden_iframe" style="display:none;"></iframe>
-</div>
-
-<!-- Optional: small script to clear field after success (already handled by server, but safe) -->
-<script>
-    // If you want to manually clear after alert, you can leave this empty.
-    // The server already returns a script that clears the message field and shows an alert.
-</script>
 
 
 
-  
 <footer>
-BRHAMPARKASH · Design & Automation Portfolio
+    BRHAMPARKASH • ENGINEERED FOR PRECISION 
 </footer>
 
 <script>
-// reveal animation
-const reveals=document.querySelectorAll('.reveal');
-function revealOnScroll(){
-const trigger=window.innerHeight*0.85;
-reveals.forEach(el=>{
-if(el.getBoundingClientRect().top<trigger)
-el.classList.add('active');
-});
-}
-window.addEventListener('scroll',revealOnScroll);
-revealOnScroll();
+    let currentState = 0;
+    // Sequential logic mapping
+    const outputMap = {
+        0: [], 
+        1: ['Y0'], 
+        2: ['Y0', 'Y1'], 
+        3: ['Y0', 'Y1', 'Y2'], 
+        4: ['Y0', 'Y1', 'Y2', 'Y3'], 
+        5: ['Y1', 'Y2', 'Y3'], 
+        6: ['Y2', 'Y3'], 
+        7: ['Y3']
+    };
 
-// particles
-const canvas=document.getElementById('bgParticles');
-const ctx=canvas.getContext('2d');
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
+    document.getElementById('x0-btn').addEventListener('click', () => {
+        currentState = (currentState + 1) % 8;
+        updateUI();
+    });
 
-let particles=Array.from({length:60},()=>({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*2+1,
-dx:Math.random()*0.4,
-dy:Math.random()*0.4
-}));
+    function updateUI() {
+        const activeY = outputMap[currentState];
+        ['Y0', 'Y1', 'Y2', 'Y3'].forEach(id => {
+            const bulb = document.getElementById(id);
+            if(bulb) bulb.className = activeY.includes(id) ? 'led-bulb active' : 'led-bulb';
+        });
 
-function animate(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-ctx.fillStyle="rgba(0,255,255,0.5)";
-particles.forEach(p=>{
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-ctx.fill();
-p.x+=p.dx;p.y+=p.dy;
-if(p.x>canvas.width||p.y>canvas.height){p.x=0;p.y=0;}
-});
-requestAnimationFrame(animate);
-}
-animate();
+        // Update ladder highlighting for visible states M0-M3
+        for(let i=0; i<4; i++) {
+            const tag = document.getElementById(`m${i}-tag`);
+            if(tag) tag.className = (i === currentState) ? 'm-tag active' : 'm-tag';
+        }
+    }
+    updateUI();
 </script>
+
+<script>
+  document.querySelector('form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    var formData = new FormData(this);
+    var url = this.action;
+
+    fetch(url, {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(data => {
+      alert('Thank you! Your enquiry has been sent.');
+      this.reset();
+    })
+    .catch(error => {
+      console.error('Fetch Error:', error); // This will show in the console
+      alert('There was a problem: ' + error.message);
+    });
+  });
+</script>
+
 
 </body>
 </html>
-
-
-
-
-
-
-
